@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int demSoDuong(float arr[], int n) {
+    if (n == 0) {
+        return 0;
+    }
+    int dem = demSoDuong(arr, n - 1);
+    if (arr[n - 1] > 0) {
+        dem++;
+    }
+    return dem;
+}
+
+int main() {
+    float arr[] = {-1.2, 3.4, -5.6, 7.8, 0.0, 9.1, -2.3};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    int soDuong = demSoDuong(arr, n);
+
+    cout << "So luong gia tri duong trong mang la " << soDuong << endl;
+
+    return 0;
+}
