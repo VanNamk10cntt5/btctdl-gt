@@ -1,0 +1,10 @@
+void hanoi(int n, int from, int to, int temp) {
+    if (n == 1) {
+        cout << "Chuyen dia tu " << from << " sang " << to << endl;
+    }
+    else {
+        hanoi(n-1, from, temp, to);
+        cout << "Chuyen dia tu " << from << " sang " << to << endl;
+        hanoi(n-1, temp, to, from);
+    }
+}
