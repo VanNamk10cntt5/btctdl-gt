@@ -1,0 +1,35 @@
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+};
+
+@vd
+Node* root = nullptr;
+
+Node* node1 = new Node;
+node1->data = 1;
+node1->left = nullptr;
+node1->right = nullptr;
+
+Node* node3 = new Node;
+node3->data = 3;
+node3->left = nullptr;
+node3->right = nullptr;
+
+Node* node2 = new Node;
+node2->data = 2;
+node2->left = node1;
+node2->right = node3;
+
+Node* node5 = new Node;
+node5->data = 5;
+node5->left = nullptr;
+node5->right = nullptr;
+
+Node* node4 = new Node;
+node4->data = 4;
+node4->left = node2;
+node4->right = node5;
+
+root = node4;
