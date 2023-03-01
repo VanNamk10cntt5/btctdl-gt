@@ -1,0 +1,10 @@
+int term(int n) {
+    int x = 1, y = 0;
+    for (int i = 1; i <= n; i++) {
+        int next_x = x + y;
+        int next_y = 3 * x + 2 * y;
+        x = next_x;
+        y = next_y;
+    }
+    return x;
+}
