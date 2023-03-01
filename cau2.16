@@ -1,0 +1,38 @@
+#include <iostream>
+#define N 8
+
+using namespace std;
+
+int board[N][N] = {0}; // Khởi tạo bàn cờ với các ô chưa đi qua có giá trị bằng 0
+
+void printBoard() {
+    // In ra bàn cờ đã đi được
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            cout << board[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+bool isValidMove(int x, int y) {
+    // Kiểm tra ô (x, y) có nằm trên bàn cờ và chưa đi qua chưa
+    return (x >= 0 && x < N && y >= 0 && y < N && board[x][y] == 0);
+}
+
+bool solve(int x, int y, int moveCount) {
+    if (moveCount == N*N) { // Nếu đã đi qua tất cả các ô thì trả về true
+        return true;
+    }
+    int dx[] = {-2, -1, 1, 2, 2, 1, -1, -2}; // Tọa độ x của 8 ô có thể đi đến
+    int dy[] = {1, 2, 2, 1, -1, -2, -2, -1}; // Tọa độ y của 8 ô có thể đi đến
+    for (int i = 0; i < 8; i++) {
+        int nextX = x + dx[i];
+        int nextY = y + dy[i];
+        if (isValidMove(nextX, nextY)) { // Nếu ô tiếp theo hợp lệ thì thử đi đến đó
+            board[nextX][nextY] = moveCount + 1; // Đánh dấu ô đã đi qua
+            if (solve(nextX, nextY, moveCount + 1)) { // Nếu đã đi qua tất cả các ô thì trả về true
+                return true;
+            }
+            board[nextX][nextY] = 0; // Quay lui nếu không tìm được bước đi hợp lệ
