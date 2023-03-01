@@ -1,0 +1,6 @@
+struct Node {
+    int numerator; // tử số
+    int denominator; // mẫu số
+    Node* left; // con trỏ trỏ đến nút con bên trái
+    Node* right; // con trỏ trỏ đến nút con bên phải
+};
