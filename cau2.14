@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void generatePermutations(vector<int>& a, vector<bool>& used, vector<vector<int>>& permutations) {
+    int n = a.size();
+    if (n == 0) { // nếu tập hợp a rỗng, không có hoán vị nào
+        return;
+    }
+    if (n == 1) { // nếu tập hợp a chỉ có một phần tử, chỉ có một hoán vị
+        permutations.push_back(a);
+        return;
+    }
+    for (int i = 0; i < n; i++) { // lặp qua từng phần tử trong tập hợp A
+        if (!used[i]) { // nếu phần tử chưa được chọn
+            used[i] = true; // đánh dấu phần tử đã được chọn
+            vector<int> b(a.begin() + 1, a.end()); // tạo tập hợp b từ tập hợp A loại bỏ phần tử đầu tiên
+            generatePermutations(b, used, permutations); // đệ quy phát sinh tất cả các hoán vị của tập hợp b
+            for (auto& p : permutations) { // thêm phần tử đầu tiên vào từng hoán vị của tập hợp b để tạo hoán v
