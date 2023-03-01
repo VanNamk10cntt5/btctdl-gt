@@ -1,0 +1,15 @@
+double S(double x, int n) {
+    if (n == 0) { // trường hợp cơ sở
+        return 1;
+    }
+    double term = pow(x, n) / factorial(n); // tính số hạng hiện tại
+    return term + S(x, n - 1); // trả về tổng của số hạng hiện tại và các số hạng trước đó
+}
+
+
+int factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
