@@ -1,0 +1,11 @@
+int term(int n) {
+    int x = 1;
+    for (int i = 1; i <= n; i++) {
+        int sum = 0;
+        for (int j = 0; j <= i-1; j++) {
+            sum += pow(i-j, 2) * X(j);
+        }
+        x = sum + pow(1, 2) * x;
+    }
+    return x;
+}
